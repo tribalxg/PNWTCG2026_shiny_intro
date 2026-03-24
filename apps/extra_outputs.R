@@ -8,24 +8,24 @@ suppressPackageStartupMessages({
   library(DT)                                   # for rendering dynamic data tables and outputting them
 })
 
-s <- storms 
+s = storms 
 
-ui <- fluidPage(
+ui = fluidPage(
   verbatimTextOutput("summary"), 
   tableOutput("table"),
   DTOutput("dtable"),
   imageOutput("image")
 )
 
-server <- function(input, output) {
+server = function(input, output) {
   
-  output$summary <- renderPrint(summary(s))     # similar to print()
+  output$summary = renderPrint(summary(s))     # similar to print()
   
-  output$table <- renderTable(head(s))          # for static tables
+  output$table = renderTable(head(s))          # for static tables
   
-  output$dtable <- DT::renderDT(s)              # for dynamic tables
+  output$dtable = DT::renderDT(s)              # for dynamic tables
   
-  output$image <- renderImage({
+  output$image = renderImage({
     list(src = "www/txg_logo.png",              # /www must live in the same level as your app.R (or ui.R and server.R) file
          contentType = 'image/jpg',
          width = 150,

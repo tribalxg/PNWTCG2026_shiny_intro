@@ -8,7 +8,7 @@ library(leaflet)
 s = storms |>
   mutate(date = as.POSIXct(sprintf("%s-%s-%s %s:00", year, month, day, hour))) 
 
-ui <- fluidPage(
+ui = fluidPage(
   leafletOutput("storm_tracks"),
   selectInput("year", 
               "Choose a year", 
@@ -18,7 +18,7 @@ ui <- fluidPage(
               NULL),
 )
 
-server <- function(input, output, session) {
+server = function(input, output, session) {
   
   storms = reactive({
     s |>
@@ -26,7 +26,7 @@ server <- function(input, output, session) {
   })
   
   observeEvent(storms(), {                      #  input in UI updates when triggered by reactive expression changing
-    choices <- unique(storms()$name)
+    choices = unique(storms()$name)
     updateSelectInput(session = session, 
                       inputId = "name", 
                       choices = choices)
@@ -38,11 +38,9 @@ server <- function(input, output, session) {
 
   output$storm_tracks = renderLeaflet({
     leaflet(data=storm()) |> 
-      addTiles() |>
-      addCircleMarkers(~long, ~lat) |>
-      addProviderTiles("Esri.WorldImagery")     # leaflet isn't married to using openstreetmap tiles
+      addProviderTiles("Esri.WorldImagery") |>     # leaflet isn't married to using openstreetmap tiles
+      addCircleMarkers(~long, ~lat)
   })
-  
 }
 
 shinyApp(ui, server)

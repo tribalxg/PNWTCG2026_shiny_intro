@@ -7,23 +7,24 @@ suppressPackageStartupMessages({
   library(leaflet)
 })
 
-s <- storms |>
+s = storms |>
   mutate(date = as.POSIXct(sprintf("%s-%s-%s %s:00", year, month, day, hour)),
-         name_year = paste(name, year, sep=", ")) 
+         name_year = paste(name, year, sep=", "))
 
-ui <- fluidPage(
+ui = fluidPage(
   selectInput("storm_choice",
               "Choose a storm to plot",
-              choices=sort(unique(s$name_year)),
+              choices=unique(s$name_year),
               selected="Hugo"),
-  actionButton("go", "GO!"),
+  actionButton("go", 
+               label = "GO!"),
   plotOutput("wind_plot"),
   leafletOutput("storm_track")
 )
 
-server <- function(input, output, session) {
+server = function(input, output, session) {
   
-  stormdata <- eventReactive(input$go, {           # define reactive expressions that are triggered by 
+  stormdata = eventReactive(input$go, {           # define reactive expressions that are triggered by 
     s |>                                           # an event as `name` = eventReactive(event, { `expression` })
       filter(name_year == input$storm_choice) |>
       arrange(date)
@@ -35,9 +36,10 @@ server <- function(input, output, session) {
   })
   
   output$storm_track = renderLeaflet({              # leaflet is a basic mapping library we can plot points on
-    leaflet(data=stormdata()) |>                    # we can refer to it as many times as we want
+    leaflet(data=stormdata()) |>                    # we can refer to stormdata() as many times as we want
       addTiles() |>
-      addCircleMarkers(~long, ~lat)
+      addCircleMarkers(lng = ~long, 
+                       lat = ~lat)
   })
 }
 

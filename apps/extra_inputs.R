@@ -2,7 +2,7 @@
 
 library(shiny)
 
-ui <- fluidPage(
+ui = fluidPage(
   passwordInput("password", 
                 "Password Input"),
   textAreaInput("textarea", 
@@ -29,7 +29,7 @@ ui <- fluidPage(
                "Action Button")
 )
 
-server <- function(input, output) {}
+server = function(input, output) {}
 
 shinyApp(ui, server)
 

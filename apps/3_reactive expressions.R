@@ -7,21 +7,20 @@ suppressPackageStartupMessages({
   library(leaflet)
 })
 
-s <- storms |>
+s = storms |>
   mutate(date = as.POSIXct(sprintf("%s-%s-%s %s:00", year, month, day, hour)),
          name_year = paste(name, year, sep=", ")) 
 
-ui <- fluidPage(
+ui = fluidPage(
   selectInput("storm_choice",
               "Choose a storm to plot",
-              choices=sort(unique(s$name_year)),
+              choices=unique(s$name_year),
               selected="Hugo"),
-  actionButton("go", "GO!"),
   plotOutput("wind_plot"),
   leafletOutput("storm_track")
 )
 
-server <- function(input, output, session) {
+server = function(input, output) {
   
   stormdata = reactive({                            # define reactive expressions as `name` = reactive({ `expression` })
     s |>

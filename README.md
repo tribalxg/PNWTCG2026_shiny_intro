@@ -1,5 +1,5 @@
 
-# Shiny Introduction
+# R [Shiny](https://shiny.posit.co/) Introduction
 
 PNW Tribal Coding Group: 2026 Retreat
 

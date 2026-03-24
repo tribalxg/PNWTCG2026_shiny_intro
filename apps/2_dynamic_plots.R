@@ -3,28 +3,32 @@
 library(shiny)
 library(dplyr)
 
-s <- storms
+s = storms
 
-ui <- fluidPage(
+ui = fluidPage(
   # Select variable for x-axis
   selectInput(inputId = "x_var", 
               label = "X Variable", 
-              choices=c("Year" = "year", "Month" = "month", "Latitude" = "lat", "Wind" = "wind", "Pressure" = "pressure"), 
-              selected="wind"),
+              choices = c("year","month", "lat", "wind", "pressure"),
+              selected="wind"),                   # add a default selection
   
   # Select variable for y-axis
   selectInput(inputId = "y_var", 
               label = "Y Variable", 
-              choices=c("Year" = "year", "Month" = "month", "Latitude" = "lat", "Wind" = "wind", "Pressure" = "pressure"), 
+              choices=c("Year" = "year",          # Can use named choices for a nicer appearance in the UI
+                        "Month" = "month", 
+                        "Latitude" = "lat", 
+                        "Wind" = "wind", 
+                        "Pressure" = "pressure"),
               selected="lat"),
   
   plotOutput("plot")
 )
 
-server <- function(input, output) {
+server = function(input, output) {
   
-  output$plot <- renderPlot({
-    plot(x=s[[input$x_var]], y=s[[input$y_var]])
+  output$plot = renderPlot({
+    plot(x=s[[input$x_var]], y=s[[input$y_var]]) 
   })
   
 }
