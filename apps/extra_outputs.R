@@ -26,11 +26,12 @@ server = function(input, output) {
   output$dtable = DT::renderDT(s)              # for dynamic tables
   
   output$image = renderImage({
-    list(src = "www/txg_logo.png",              # /www must live in the same level as your app.R (or ui.R and server.R) file
+    list(src = "www/nwifc_logo.png",           # /www must live in the same level as your app.R (or ui.R and server.R) file
          contentType = 'image/jpg',
-         width = 150,
-         height = 150,
-         alt = "This is alternate text")})
+         #width = 150,
+         #height = 150,
+         alt = "This is alternate text")},
+    deleteFile=FALSE)
 }
 
 shinyApp(ui = ui, server = server)
