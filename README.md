@@ -22,6 +22,9 @@ Materials in this workshop were adapted from:
 - [Shiny for R Cheat
   Sheet](https://shiny.posit.co/r/articles/start/cheatsheet/)
 
+- [How to deploy Shiny apps in 2026 \| Alex Chisholm \| Data Science
+  Lab](https://youtu.be/O4AFJT4A858?si=55HB8k5aSxmmKZgD)
+
 ## Example Shiny Apps
 
 - [MPA Europe - Species Distrbution
@@ -31,4 +34,5 @@ Materials in this workshop were adapted from:
 
 - [QR Code Generator](https://broccolito.shinyapps.io/qrcode_generator/)
 
-- [National Ocean Economics Program](https://oceaneconomics.org/)
+- [National Ocean Economics Program](https://oceaneconomics.org/) (Shiny
+  apps embedded in website)

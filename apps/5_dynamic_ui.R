@@ -18,7 +18,7 @@ ui = fluidPage(
               choices=sort(unique(s$year))),
   selectInput("name",
               "Choose a storm",
-              NULL),
+              choices = NULL)
 )
 
 server = function(input, output, session) {
