@@ -31,3 +31,5 @@ Materials in this workshop were adapted from:
 - [WhaleMap](https://whalemap.org/WhaleMap/)
 
 - [QR Code Generator](https://broccolito.shinyapps.io/qrcode_generator/)
+
+- [National Ocean Economics Program](https://oceaneconomics.org/)
