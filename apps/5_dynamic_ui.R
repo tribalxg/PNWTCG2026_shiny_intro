@@ -1,9 +1,12 @@
 # Dynamic User Interfaces - update UI based on selections from the user
 
-library(shiny)
-library(ggplot2)
-library(dplyr)
-library(leaflet)
+suppressPackageStartupMessages({
+  library(shiny)
+  library(ggplot2)
+  library(dplyr)
+  library(leaflet)
+  
+})
 
 s = storms |>
   mutate(date = as.POSIXct(sprintf("%s-%s-%s %s:00", year, month, day, hour))) 

@@ -10,7 +10,7 @@ ui = fluidPage(
   selectInput(inputId = "x_var", 
               label = "X Variable", 
               choices = c("year","month", "lat", "wind", "pressure"),
-              selected="wind"),                   # add a default selection
+              selected = "wind"),                   # add a default selection
   
   # Select variable for y-axis
   selectInput(inputId = "y_var", 

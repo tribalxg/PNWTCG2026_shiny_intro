@@ -12,7 +12,7 @@ ui = fluidPage(
 
 
 server = function(input, output) {
-  output$myTextOutput = renderText({        # define an ouput by assigning it to the output list
+  output$myTextOutput = renderText({        # define an output by assigning it to the output list
     paste("Hello,", input$myTextInput)      # use a render function following the format output$`ID` = render`Type`({ some computation })
   })
 }

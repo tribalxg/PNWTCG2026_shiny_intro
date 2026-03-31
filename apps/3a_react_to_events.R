@@ -15,7 +15,7 @@ ui = fluidPage(
   selectInput("storm_choice",
               "Choose a storm to plot",
               choices=unique(s$name_year),
-              selected="Hugo"),
+              selected="Bill, 2009"),
   actionButton("go", 
                label = "GO!"),
   plotOutput("wind_plot"),
@@ -25,7 +25,7 @@ ui = fluidPage(
 server = function(input, output, session) {
   
   stormdata = eventReactive(input$go, {           # define reactive expressions that are triggered by 
-    s |>                                           # an event as `name` = eventReactive(event, { `expression` })
+    s |>                                          # an event as `name` = eventReactive(event, { `expression` })
       filter(name_year == input$storm_choice) |>
       arrange(date)
   })

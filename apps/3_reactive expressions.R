@@ -15,7 +15,7 @@ ui = fluidPage(
   selectInput("storm_choice",
               "Choose a storm to plot",
               choices=unique(s$name_year),
-              selected="Hugo"),
+              selected="Bill, 2009"),
   plotOutput("wind_plot"),
   leafletOutput("storm_track")
 )
@@ -29,14 +29,15 @@ server = function(input, output) {
   })
   
   output$wind_plot = renderPlot({
-    ggplot(stormdata(), aes(x=date)) +              # call the expression like a function by its name 
+    ggplot(data = stormdata(), aes(x=date)) +       # call the expression like a function by its name 
       geom_line(aes(y=wind)) 
   })
   
   output$storm_track = renderLeaflet({              # leaflet is a basic mapping library we can plot points on
     leaflet(data=stormdata()) |>                    # we can refer to it as many times as we want
       addTiles() |>
-      addCircleMarkers(~long, ~lat)
+      addCircleMarkers(lng = ~long, 
+                       lat = ~lat)
   })
 }
 
